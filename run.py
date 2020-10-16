@@ -23,6 +23,16 @@ from google.cloud import storage
 import requests
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/content/drive/My Drive/colorize_space/googlekey.json"
 file_name = ""
+sub_folder = ""
+
+storage_client = storage.Client()
+bucket_name = 'colorize_jobs'
+def upload_blob(source_file_name, destination_blob_name):
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+    blob.upload_from_filename(source_file_name)
+    
 if __name__ == "__main__":
     
     
@@ -34,6 +44,7 @@ if __name__ == "__main__":
       file_name = name
       print(data[0]["email"])
       print(data[0]["img_source"] + "/"  + data[0]["name"])
+      sub_folder = data[0]["img_source"]
       link = 'https://storage.googleapis.com/colorize_jobs/' + data[0]["img_source"] + "/"  + data[0]["name"]
       urllib.request.urlretrieve(link, '/content/photo_restoration/test_images/old/'+name)
       myimage = cv2.imread("/content/photo_restoration/test_images/old/"+ name)
@@ -188,6 +199,8 @@ if __name__ == "__main__":
     print("All the processing is done. Please check the results.")
     finalname = file_name.replace(".jpg", ".png")
     is_good = os.path.isfile('/content/photo_restoration/output/final_output/' + finalname)
+    if (is_good):
+        upload_blob('/content/photo_photo_restoration/output/final_output/' + finalname, sub_folder + "/" + "stage_" +finalname)
     print("FINAL PART")
     print(is_good)
 
