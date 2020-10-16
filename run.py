@@ -19,8 +19,8 @@ if __name__ == "__main__":
       print(data[0]["email"])
       print(data[0]["img_source"] + "/"  + data[0]["name"])
       link = 'https://storage.googleapis.com/colorize_jobs/' + data[0]["img_source"] + "/"  + data[0]["name"]
-      urllib.request.urlretrieve(link, './source/'+name)
-      myimage = cv2.imread("./source/"+ name)
+      urllib.request.urlretrieve(link, '/content/photo_restoration/test_images/old/'+name)
+      myimage = cv2.imread("/content/photo_restoration/test_images/old/"+ name)
       height = myimage.shape[0]
       wid = myimage.shape[1]
       print("xui pizda")
