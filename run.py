@@ -186,7 +186,7 @@ if __name__ == "__main__":
     print("\n")
 
     print("All the processing is done. Please check the results.")
-    finalname = file_name.replace(".png", ".jpg")
+    finalname = file_name.replace(".jpg", ".png")
     is_good = os.path.isfile('/content/photo_restoration/output/final_output/' + finalname)
     print("FINAL PART")
     print(is_good)
