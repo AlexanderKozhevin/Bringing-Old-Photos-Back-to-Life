@@ -22,7 +22,7 @@ import datetime
 from google.cloud import storage
 import requests
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/content/drive/My Drive/colorize_space/googlekey.json"
-
+file_name = ""
 if __name__ == "__main__":
     
     
@@ -31,6 +31,7 @@ if __name__ == "__main__":
     data = json.loads(r.text)
     if (len(data)>0):
       name = data[0]["name"]
+      file_name = name
       print(data[0]["email"])
       print(data[0]["img_source"] + "/"  + data[0]["name"])
       link = 'https://storage.googleapis.com/colorize_jobs/' + data[0]["img_source"] + "/"  + data[0]["name"]
@@ -185,4 +186,8 @@ if __name__ == "__main__":
     print("\n")
 
     print("All the processing is done. Please check the results.")
+    finalname = file_name.replace(".png", ".jpg")
+    is_good = os.path.isfile('/content/photo_restoration/output/final_output/' + finalname)
+    print("FINAL PART")
+    print(is_good)
 
