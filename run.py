@@ -4,9 +4,24 @@
 import os
 import argparse
 import shutil
-import requests
+
 import json
 import urllib.request
+
+import cv2
+import imageio
+import os
+import numpy as np
+from PIL import Image
+import scipy.misc
+from PIL import ImageFont
+from PIL import ImageDraw 
+import urllib.request
+import threading
+import datetime
+from google.cloud import storage
+import requests
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/content/drive/My Drive/colorize_space/googlekey.json"
 
 if __name__ == "__main__":
     
