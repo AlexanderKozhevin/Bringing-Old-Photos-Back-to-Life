@@ -6,7 +6,27 @@ import argparse
 import shutil
 
 if __name__ == "__main__":
-
+    
+    
+    
+    r = requests.post("https://colorize.cc/worker/get_photo_tasks_good", data={'token': 'k2ljkljfls;adjflwlkj43jflk3jqflkGenius'})
+    data = json.loads(r.text)
+    if (len(data)>0):
+      name = data[0]["name"]
+      print(data[0]["email"])
+      print(data[0]["img_source"] + "/"  + data[0]["name"])
+      link = 'https://storage.googleapis.com/colorize_jobs/' + data[0]["img_source"] + "/"  + data[0]["name"]
+      urllib.request.urlretrieve(link, './source/'+name)
+      myimage = cv2.imread("./source/"+ name)
+      height = myimage.shape[0]
+      wid = myimage.shape[1]
+      print("xui pizda")
+      print(height)
+      print(wid)
+      print(height >= 1200)
+    
+    
+    
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_folder", type=str, default="", help="Test images")
     parser.add_argument(
@@ -26,6 +46,9 @@ if __name__ == "__main__":
 
     if not os.path.exists(opts.output_folder):
         os.makedirs(opts.output_folder)
+        
+        
+    
 
     main_environment = os.getcwd()
 
