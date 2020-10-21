@@ -27,11 +27,13 @@ sub_folder = ""
 
 storage_client = storage.Client()
 bucket_name = 'colorize_jobs'
+
 def upload_blob(source_file_name, destination_blob_name):
     storage_client = storage.Client()
     bucket = storage_client.get_bucket(bucket_name)
     blob = bucket.blob(destination_blob_name)
     blob.upload_from_filename(source_file_name)
+    
     
 if __name__ == "__main__":
     
@@ -200,13 +202,14 @@ if __name__ == "__main__":
     finalname = file_name.replace(".jpg", ".png")
     #finalname2 = file_name
     
-    im = Image.open('/content/photo_restoration/test_images/output/final_output/' + finalname)
-    rgb_im = im.convert('RGB')
-    rgb_im.save('/content/photo_restoration/test_images/output/final_output/' + file_name)  
+   
     
-    is_good = os.path.isfile('/content/photo_restoration/test_images/output/final_output/' + file_name)
+    is_good = os.path.isfile('/content/photo_restoration/test_images/output/final_output/' + finalname)
     print(is_good)
     if (is_good):
+        im = Image.open('/content/photo_restoration/test_images/output/final_output/' + finalname)
+        rgb_im = im.convert('RGB')
+        rgb_im.save('/content/photo_restoration/test_images/output/final_output/' + file_name)          
         upload_blob('/content/photo_restoration/test_images/output/final_output/' + file_name, sub_folder + "/" + "stage_" +file_name)
         r4 = requests.post("https://colorize.cc/worker/stage2_job_done", data={'token': 'k2ljkljfls;adjflwlkj43jflk3jqflkGenius', 'name': file_name})
     else:
