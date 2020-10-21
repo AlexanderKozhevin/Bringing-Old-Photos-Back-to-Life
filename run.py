@@ -198,9 +198,9 @@ if __name__ == "__main__":
 
     print("All the processing is done. Please check the results.")
     finalname = file_name.replace(".jpg", ".png")
-    is_good = os.path.isfile('/content/photo_restoration/output/final_output/' + finalname)
+    is_good = os.path.isfile('/content/photo_restoration/test_images/output/final_output/' + finalname)
     if (is_good):
-        upload_blob('/content/photo_photo_restoration/output/final_output/' + finalname, sub_folder + "/" + "stage_" +finalname)
+        upload_blob('/content/photo_photo_restoration/test_images/output/final_output/' + finalname, sub_folder + "/" + "stage_" +finalname)
         r4 = requests.post("https://colorize.cc/worker/stage2_job_done", data={'token': 'k2ljkljfls;adjflwlkj43jflk3jqflkGenius', 'name': file_name})
     else:
         r3 = requests.post("https://colorize.cc/worker/stage2_job_fail", data={'token': 'k2ljkljfls;adjflwlkj43jflk3jqflkGenius', 'name': file_name})
