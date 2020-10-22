@@ -72,7 +72,7 @@ if __name__ == "__main__":
         
       if wid >= 2000:
         print("resize suka")
-        ratioon = width/2000
+        ratioon = wid/2000
         h2 = int(myimage.shape[0] / ratioon)
         w2 = int(myimage.shape[1] / ratioon)
         dimmm = (w2, h2)
