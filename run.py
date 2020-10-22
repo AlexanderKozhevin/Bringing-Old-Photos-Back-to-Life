@@ -69,7 +69,10 @@ if __name__ == "__main__":
         cv2.imwrite("/content/photo_restoration/test_images/old/"+name,resized)
         print("saved dick resize")
         
-        
+      myimage = cv2.imread("/content/photo_restoration/test_images/old/"+ name)
+      height = myimage.shape[0]
+      wid = myimage.shape[1]
+    
       if wid >= 2000:
         print("resize suka")
         ratioon = wid/2000
@@ -80,7 +83,19 @@ if __name__ == "__main__":
         print(w2 * h2)
         resized = cv2.resize(myimage, dimmm, interpolation = cv2.INTER_AREA)
         cv2.imwrite("/content/photo_restoration/test_images/old/"+name,resized)
-        print("saved dick resize")                
+        print("saved dick resize")
+        
+      myimage = cv2.imread("/content/photo_restoration/test_images/old/"+ name)
+      print("FINAL SIEZE #################")
+      print("FINAL SIEZE #################")
+      print("FINAL SIEZE #################")
+      print("FINAL SIEZE #################")
+      height = myimage.shape[0]
+      wid = myimage.shape[1]  
+      print(wid)
+      print(height)
+      print("FINAL SIEZE #################")
+    
     
     
     
