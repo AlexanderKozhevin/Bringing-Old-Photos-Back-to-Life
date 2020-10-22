@@ -49,6 +49,7 @@ if __name__ == "__main__":
       sub_folder = data[0]["img_source"]
       link = 'https://storage.googleapis.com/colorize_jobs/' + data[0]["img_source"] + "/"  + data[0]["name"]
       urllib.request.urlretrieve(link, '/content/photo_restoration/test_images/old/'+name)
+      print(link)
       myimage = cv2.imread("/content/photo_restoration/test_images/old/"+ name)
       height = myimage.shape[0]
       wid = myimage.shape[1]
