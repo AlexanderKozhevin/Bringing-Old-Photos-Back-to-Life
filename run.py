@@ -248,6 +248,8 @@ if __name__ == "__main__":
     is_good = os.path.isfile('/content/photo_restoration/test_images/output/final_output/' + finalname)
     print(is_good)
     if (is_good):
+        link3 = 'https://storage.googleapis.com/colorize_jobs/' + data[0]["img_source"] + "/stage_"  + data[0]["name"]
+        print(link3)
         im = Image.open('/content/photo_restoration/test_images/output/final_output/' + finalname)
         rgb_im = im.convert('RGB')
         rgb_im.save('/content/photo_restoration/test_images/output/final_output/' + file_name)          
