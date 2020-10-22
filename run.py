@@ -56,6 +56,18 @@ if __name__ == "__main__":
       print(height)
       print(wid)
       print(height >= 1200)
+        
+      if height >= 1200:
+        print("resize suka")
+        ratioon = height/1300
+        h2 = int(myimage.shape[0] / ratioon)
+        w2 = int(myimage.shape[1] / ratioon)
+        dimmm = (w2, h2)
+        print("matrix size")
+        print(w2 * h2)
+        resized = cv2.resize(myimage, dimmm, interpolation = cv2.INTER_AREA)
+        cv2.imwrite("/content/photo_restoration/test_images/old/"+name,resized)
+        print("saved dick resize")        
     
     
     
